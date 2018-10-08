@@ -270,6 +270,9 @@
 			// 每次重连后获取服务器的未签收消息
 			function fetchUnReadMsg () {
 				var user = app.getUserGlobalInfo();
+				if(user == null){
+					return;
+				}
 				var msgIds = ",";
 				mui.ajax(app.serverUrl + "/u/getUnReadMsgList?acceptUserId="+user.id,{
 					data:{},
@@ -308,6 +311,9 @@
 			// 展示聊天快照，渲染列表
 			function loadingChatSnapshot(){
 				var user = app.getUserGlobalInfo();
+				if(user == null){
+					return;
+				}
 				var chatSnapshotList = app.getUserChatSnapshot(user.id);
 				
 				var chatItemHtml = '';
@@ -346,6 +352,9 @@
 			// 获取后端所有好友
 			function fetchContactList () {
 				var user = app.getUserGlobalInfo();
+				if(user == null){
+					return;
+				}
 				mui.ajax(app.serverUrl + "/u/myFriends?userId="+user.id,{
 					data:{},
 					dataType:'json',//服务器返回json格式数据

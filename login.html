@@ -135,8 +135,12 @@
 									var userInfoJson = data.data;
 									app.setUserGlobalInfo(userInfoJson);
 									
+									plus.webview.close("index.html");
 									// 页面跳转
-									mui.openWindow("index.html", "index.html");
+									mui.openWindow({
+										url: "index.html",
+										id: "index.html"
+									});
 								} else {
 									app.showToast(data.msg, "error");
 								}

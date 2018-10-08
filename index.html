@@ -66,10 +66,10 @@
 		}
 		
 		mui.plusReady(function(){
-			
 			mui.back = function(){
 				return false;
 			}
+			console.log("eeee");
 			
 			// 对网络连接进行事件监听
 			netChangeSwitch();
@@ -79,7 +79,8 @@
 			
 			//向当前的主页webview追加子页的4张webview对象
 			for(var i = 0;i<muxinArray.length; i++){
-				var muxinPage = plus.webview.create( muxinArray[i].pageUrl, muxinArray[i].pageId, muxinStyle);
+				plus.webview.close(muxinArray[i].pageId);
+				var muxinPage = plus.webview.create(muxinArray[i].pageUrl, muxinArray[i].pageId, muxinStyle);
 				// 隐藏webview窗口
 				muxinPage.hide();
 				// 追加每一个子页面到当前主页面
@@ -103,7 +104,7 @@
 			});
 			
 			// 延时加载
-			setTimeout("initData()", 1000);
+			setTimeout("initData()", 300);
 		});
 		
 		function netChangeSwitch () {
